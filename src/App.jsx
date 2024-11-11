@@ -1,8 +1,9 @@
+import Footer from "./components/common/Footer";
 function App() {
   return (
-    <div>
-      <h1 className="text-red-500 font-bold text-2xl">Hello world</h1>
-    </div>
+    <main>
+      <Footer />
+    </main>
   );
 }
 
