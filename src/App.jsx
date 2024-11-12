@@ -1,9 +1,9 @@
-import Footer from "./components/common/Footer";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/routes";
+
 function App() {
   return (
-    <main>
-      <Footer />
-    </main>
+    <RouterProvider router={router} future={{ v7_startTransition: true }} />
   );
 }
 

@@ -10,7 +10,7 @@ export default {
       colors: {
         cream: "#fff7ed",
         softCream: "#fffead0",
-        orange: "#ff8c38",
+        pantone: "#ff8c38",
         darkOrange: "#e17654",
         darkGreen: "#115e59",
         night: "#161616",
@@ -19,6 +19,12 @@ export default {
           200: "#4d4d4d",
           300: "#252525",
         },
+      },
+      boxShadow: {
+        overlay: "inset 0 0 0 700px rgba(10, 10, 10, 0.7)",
+      },
+      backgroundImage: {
+        mountain: "url(/mountain.png)",
       },
     },
   },
