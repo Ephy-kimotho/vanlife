@@ -37,7 +37,7 @@ function About() {
           Your van is ready.
         </h3>
         <Link
-          to="vans"
+          to="/vans"
           className="block w-52 py-2 px-8 bg-night text-white rounded font-bold"
         >
           Explore our vans

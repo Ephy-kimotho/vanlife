@@ -11,6 +11,7 @@ export default {
         cream: "#fff7ed",
         softCream: "#fffead0",
         pantone: "#ff8c38",
+        softOrange: "#ffcc8d",
         darkOrange: "#e17654",
         darkGreen: "#115e59",
         night: "#161616",
