@@ -11,9 +11,10 @@ function Header() {
       <nav className="flex gap-8 mr-8">
         <NavLink
           to="about"
+          end
           className={({ isActive }) =>
             isActive
-              ? "text-xl text-night underline"
+              ? "text-xl text-night underline font-bold"
               : "text-xl text-gray-200 hover:text-night hover:underline"
           }
         >
@@ -22,9 +23,10 @@ function Header() {
 
         <NavLink
           to="vans"
+          end
           className={({ isActive }) =>
             isActive
-              ? "text-xl text-night underline"
+              ? "text-xl text-night underline font-bold"
               : "text-xl text-gray-200 hover:text-night hover:underline"
           }
         >
