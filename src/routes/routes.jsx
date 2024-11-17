@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import About from "../components/About";
 import Vans from "../components/Vans";
 import ErrorBoundary from "../components/ErrorBoundary";
+import vansLoader from "../loaders/vansLoader";
 
 const router = createBrowserRouter(
   [
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
         {
           path: "vans",
           element: <Vans />,
+          loader: vansLoader,
         },
         {
           path: "*",
