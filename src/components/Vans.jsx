@@ -1,5 +1,5 @@
 import { useLoaderData, useSearchParams, Link } from "react-router-dom";
-import { getButtonVariants } from "./buttonVariants";
+import clsx from "clsx";
 import Button from "./common/Button";
 
 function Vans() {
@@ -82,15 +82,27 @@ function Vans() {
 
   const filterButtonsElements = filterButtons.map((btnType, idx) => {
     const isActive = btnType === typeFilter;
+
+    const buttonClassNames = clsx(
+      "text-gray-200 font-inter text-base py-2 px-4 cursor-pointer rounded-md font-bold transition duration-300",
+      {
+        "bg-darkOrange text-white": isActive && btnType === "simple",
+        "bg-night text-white": isActive && btnType === "luxury",
+        "bg-darkGreen text-white": isActive && btnType === "rugged",
+        "bg-appleRed text-white": isActive && btnType === "clear",
+
+
+        "hover:bg-darkOrange hover:text-softCream": !isActive && btnType === "simple",
+        "hover:bg-night hover:text-softCream": !isActive && btnType === "luxury",
+        "hover:bg-darkGreen hover:text-softCream": !isActive && btnType === "rugged",
+        "hover:bg-appleRed hover:text-softCream": !isActive && btnType === "clear",
+        
+        "bg-softCream": !isActive,
+      }
+    );
+
     return (
-      <button
-        key={idx}
-        className={getButtonVariants({
-          type: btnType,
-          active: isActive,
-        })}
-        onClick={() => handleFilterChange(btnType)}
-      >
+      <button key={idx} className={buttonClassNames} onClick={() => handleFilterChange(btnType)}>
         {btnType}
       </button>
     );
