@@ -1,5 +1,6 @@
-import Button from "./common/Button";
 import { useLoaderData, useSearchParams, Link } from "react-router-dom";
+import { getButtonVariants } from "./buttonVariants";
+import Button from "./common/Button";
 
 function Vans() {
   const vans = useLoaderData();
@@ -80,10 +81,14 @@ function Vans() {
   }
 
   const filterButtonsElements = filterButtons.map((btnType, idx) => {
+    const isActive = btnType === typeFilter;
     return (
       <button
         key={idx}
-        className="text-gray-200 font-inter text-base py-2 px-4 cursor-pointer rounded-md font-bold bg-softCream"
+        className={getButtonVariants({
+          type: btnType,
+          active: isActive,
+        })}
         onClick={() => handleFilterChange(btnType)}
       >
         {btnType}
