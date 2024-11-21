@@ -3,8 +3,10 @@ import Layout from "../layout/Layout";
 import Home from "../components/Home";
 import About from "../components/About";
 import Vans from "../components/Vans";
+import VanDetail from "../components/VanDetail";
 import ErrorBoundary from "../components/ErrorBoundary";
 import vansLoader from "../loaders/vansLoader";
+import vanLoader from "../loaders/vanLoader";
 
 const router = createBrowserRouter(
   [
@@ -24,6 +26,11 @@ const router = createBrowserRouter(
           path: "vans",
           element: <Vans />,
           loader: vansLoader,
+        },
+        {
+          path: "vans/:vanId",
+          element: <VanDetail />,
+          loader: vanLoader,
         },
         {
           path: "*",
