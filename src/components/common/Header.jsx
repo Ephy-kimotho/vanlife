@@ -8,14 +8,26 @@ function Header() {
         <img src={Logo} alt="vanlife logo" className="w-32 sm:w-40" />
       </Link>
 
-      <nav className="flex gap-8 mr-8">
+      <nav className="flex gap-4 sm:gap-8  mr-2 sm:mr-8">
+        <NavLink
+          to="host"
+          end
+          className={({ isActive }) =>
+            isActive
+              ? "text-base sm:text-xl text-night underline font-bold"
+              : "text-base sm:text-xl text-gray-200 hover:text-night hover:underline"
+          }
+        >
+          Host
+        </NavLink>
+
         <NavLink
           to="about"
           end
           className={({ isActive }) =>
             isActive
-              ? "text-xl text-night underline font-bold"
-              : "text-xl text-gray-200 hover:text-night hover:underline"
+              ? "text-base sm:text-xl text-night underline font-bold"
+              : "text-base sm:text-xl text-gray-200 hover:text-night hover:underline"
           }
         >
           About
@@ -26,8 +38,8 @@ function Header() {
           end
           className={({ isActive }) =>
             isActive
-              ? "text-xl text-night underline font-bold"
-              : "text-xl text-gray-200 hover:text-night hover:underline"
+              ? "text-base sm:text-xl text-night underline font-bold"
+              : "text-base sm:text-xl text-gray-200 hover:text-night hover:underline"
           }
         >
           Vans
