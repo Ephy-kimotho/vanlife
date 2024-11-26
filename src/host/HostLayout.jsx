@@ -4,14 +4,14 @@ function HostLayout() {
   return (
     <section className="flex-grow bg-cream">
       <header className="my-2">
-        <nav className="flex gap-3 sm:gap-8 py-3 w-[96%] mx-auto">
+        <nav className="flex gap-3 sm:gap-8 py-3 px-4 sm:px-8 ">
           <NavLink
             to="."
             end
             className={({ isActive }) => {
               return isActive
-                ? "text-night font-bold underline font-inter text-base"
-                : "text-gray-200 hover:text-night no-underline hover:underline font-inter hover:font-bold text-base";
+                ? "text-night font-bold underline font-inter text-base md:text-xl"
+                : "text-gray-200 hover:text-night no-underline hover:underline font-inter hover:font-bold text-base md:text-xl";
             }}
           >
             Dashboard
@@ -20,8 +20,8 @@ function HostLayout() {
             to="income"
             className={({ isActive }) => {
               return isActive
-                ? "text-night font-bold underline font-inter text-base"
-                : "text-gray-200 hover:text-night no-underline hover:underline font-inter hover:font-bold text-base";
+                ? "text-night font-bold underline font-inter text-base md:text-xl"
+                : "text-gray-200 hover:text-night no-underline hover:underline font-inter hover:font-bold text-base md:text-xl";
             }}
           >
             Income
@@ -30,8 +30,8 @@ function HostLayout() {
             to="vans"
             className={({ isActive }) => {
               return isActive
-                ? "text-night font-bold underline font-inter text-base"
-                : "text-gray-200 hover:text-night no-underline hover:underline font-inter hover:font-bold text-base";
+                ? "text-night font-bold underline font-inter text-base md:text-xl"
+                : "text-gray-200 hover:text-night no-underline hover:underline font-inter hover:font-bold text-base md:text-xl";
             }}
           >
             Vans
@@ -40,8 +40,8 @@ function HostLayout() {
             to="reviews"
             className={({ isActive }) => {
               return isActive
-                ? "text-night font-bold underline font-inter text-base"
-                : "text-gray-200 hover:text-night no-underline hover:underline font-inter hover:font-bold text-base";
+                ? "text-night font-bold underline font-inter text-base md:text-xl"
+                : "text-gray-200 hover:text-night no-underline hover:underline font-inter hover:font-bold text-base md:text-xl";
             }}
           >
             Reviews
@@ -49,7 +49,7 @@ function HostLayout() {
         </nav>
       </header>
       <div>
-        <div className="w-[96%] mx-auto">
+        <div>
           <Outlet />
         </div>
       </div>

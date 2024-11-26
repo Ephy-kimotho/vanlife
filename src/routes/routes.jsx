@@ -5,13 +5,12 @@ import About from "../components/About";
 import Vans from "../components/Vans";
 import VanDetail from "../components/VanDetail";
 import ErrorBoundary from "../components/ErrorBoundary";
-import vansLoader from "../loaders/vansLoader";
-import vanLoader from "../loaders/vanLoader";
 import HostLayout from "../host/HostLayout";
 import Dashboard from "../host/Dashboard";
 import HostVans from "../host/HostVans";
 import Income from "../host/Income";
 import Reviews from "../host/Reviews";
+import { vansLoader, vanLoader, hostVansLoader } from "../loaders/Loaders";
 
 const router = createBrowserRouter(
   [
@@ -44,6 +43,7 @@ const router = createBrowserRouter(
             {
               index: true,
               element: <Dashboard />,
+              loader: hostVansLoader
             },
             {
               path: "vans",
