@@ -1,29 +1,28 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 function HostVans() {
   const vans = useLoaderData();
 
   const vanElements = vans.map((van) => (
-    <article
-      key={van.id}
-      className="bg-white p-4 rounded font-inter flex justify-between items-center"
-    >
-      <div className="flex gap-3">
-        <img
-          src={van.imageUrl}
-          alt={van.name}
-          className="w-20 h-20 md:w-36 md:h-36 rounded object-cover"
-        />
-        <div className="self-center">
-          <p className="text-night font-bold font-inter text-lg md:text-2xl">
-            {van.name}
-          </p>
-          <p className="text-gray-200 md:text-lg">
-            $60/<span className="text-sm md:text-base">day</span>
-          </p>
+    <Link key={van.id} to={van.id}>
+      <article className="bg-white p-4 rounded font-inter flex justify-between items-center">
+        <div className="flex gap-3">
+          <img
+            src={van.imageUrl}
+            alt={van.name}
+            className="w-20 h-20 md:w-36 md:h-36 rounded object-cover"
+          />
+          <div className="self-center">
+            <p className="text-night font-bold font-inter text-lg md:text-2xl">
+              {van.name}
+            </p>
+            <p className="text-gray-200 md:text-lg">
+              $60/<span className="text-sm md:text-base">day</span>
+            </p>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </Link>
   ));
 
   return (

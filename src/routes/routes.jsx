@@ -10,7 +10,13 @@ import Dashboard from "../host/Dashboard";
 import HostVans from "../host/HostVans";
 import Income from "../host/Income";
 import Reviews from "../host/Reviews";
-import { vansLoader, vanLoader, hostVansLoader } from "../loaders/Loaders";
+import HostVanDetail from "../host/HostVanDetail";
+import {
+  vansLoader,
+  vanLoader,
+  hostVansLoader,
+  hostVanLoader,
+} from "../loaders/Loaders";
 
 const router = createBrowserRouter(
   [
@@ -43,12 +49,17 @@ const router = createBrowserRouter(
             {
               index: true,
               element: <Dashboard />,
-              loader: hostVansLoader
+              loader: hostVansLoader,
             },
             {
               path: "vans",
               element: <HostVans />,
-              loader: hostVansLoader
+              loader: hostVansLoader,
+            },
+            {
+              path: "vans/:vanId",
+              element: <HostVanDetail/>,
+              loader:hostVanLoader
             },
             {
               path: "income",

@@ -1,4 +1,11 @@
-import { collection, getDocs, doc, getDoc, query, where } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "./firebaseConfig";
 
 async function getVans() {
@@ -22,15 +29,23 @@ async function getVan(vanId) {
 }
 
 async function getHostVans() {
-  const collectionRef = collection(db, "vans")
-  const q = query(collectionRef, where("hostId", "==", "123"))
+  const collectionRef = collection(db, "vans");
+  const q = query(collectionRef, where("hostId", "==", "123"));
 
-  const querySnapshot = await getDocs(q)
+  const querySnapshot = await getDocs(q);
 
-  const hostVans = querySnapshot.docs.map(doc => ({ id:doc.id, ...doc.data()}))
+  const hostVans = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
 
-  return hostVans
+  return hostVans;
 }
 
+async function getHostVan(vanId) {
+  const docRef = doc(db, "vans", vanId);
+  const docSnapshot = await getDoc(docRef);
+  return docSnapshot.data()
+}
 
-export { getVans, getVan, getHostVans };
+export { getVans, getVan, getHostVans, getHostVan };

@@ -1,16 +1,19 @@
-import { getVans, getVan, getHostVans } from "../../api";
+import { getVans, getVan, getHostVans, getHostVan } from "../../api";
 
- async function vansLoader() {
+async function vansLoader() {
   return await getVans();
 }
 
-
-async function vanLoader({params}){
-  return await getVan(params.vanId)
+async function vanLoader({ params }) {
+  return await getVan(params.vanId);
 }
 
 async function hostVansLoader() {
- return await getHostVans()
+  return await getHostVans();
 }
 
-export { vansLoader, vanLoader, hostVansLoader}
+async function hostVanLoader({params}) {
+  return await getHostVan(params.vanId)
+}
+
+export { vansLoader, vanLoader, hostVansLoader, hostVanLoader };
