@@ -48,6 +48,7 @@ const router = createBrowserRouter(
             {
               path: "vans",
               element: <HostVans />,
+              loader: hostVansLoader
             },
             {
               path: "income",
