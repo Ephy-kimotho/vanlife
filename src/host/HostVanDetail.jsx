@@ -1,4 +1,4 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, NavLink, Outlet } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Button from "../components/common/Button";
 
@@ -17,7 +17,7 @@ function HostVanDetail() {
           Back to all vans
         </Link>
 
-        <div className="bg-white p-4 rounded mt-4 mb-8">
+        <div className="bg-white p-8 rounded mt-3 mb-8">
           <article className="mb-4 flex gap-4">
             <img
               src={van.imageUrl}
@@ -31,12 +31,51 @@ function HostVanDetail() {
                 {van.name}
               </h3>
               <p className="text-night text-base sm:text-lg font-inter font-bold">
-                ${van.price}{" "}
+                ${van.price}
                 <span className="font-normal text-sm sm:text-base">/day</span>
               </p>
             </div>
           </article>
-          <div>{/* place outlet here */}</div>
+
+          <div>
+            <nav className="flex gap-5 my-2">
+              <NavLink
+                to="."
+                end
+                className={({ isActive }) => {
+                  return isActive
+                    ? "text-black font-bold font-inter underline text-base sm:text-lg tracking-wide"
+                    : "text-night hover:text-black no-underline hover:underline text-base font-inter hover:font-bold sm:text-lg tracking-wide";
+                }}
+              >
+                Details
+              </NavLink>
+              <NavLink
+                to="pricing"
+                className={({ isActive }) => {
+                  return isActive
+                    ? "text-black font-bold font-inter underline text-base sm:text-lg tracking-wide"
+                    : "text-night hover:text-black no-underline hover:underline text-base font-inter hover:font-bold sm:text-lg tracking-wide";
+                }}
+              >
+                Pricing
+              </NavLink>
+              <NavLink
+                to="photos"
+                className={({ isActive }) => {
+                  return isActive
+                    ? "text-black font-bold font-inter underline text-base sm:text-lg tracking-wide"
+                    : "text-night hover:text-black no-underline hover:underline text-base font-inter hover:font-bold sm:text-lg tracking-wide";
+                }}
+              >
+                Photos
+              </NavLink>
+            </nav>
+
+            <div>
+              <Outlet context={van}/>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -30,6 +30,9 @@ export default {
       backgroundImage: {
         mountain: "url(/mountain.png)",
       },
+      spacing: {
+        850: "850px",
+      },
     },
   },
   plugins: [],

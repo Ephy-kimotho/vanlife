@@ -11,6 +11,9 @@ import HostVans from "../host/HostVans";
 import Income from "../host/Income";
 import Reviews from "../host/Reviews";
 import HostVanDetail from "../host/HostVanDetail";
+import HostVanInfo from "../host/HostVanInfo";
+import HostVanPricing from "../host/HostVanPricing";
+import HostVanPhoto from "../host/HostVanPhoto";
 import {
   vansLoader,
   vanLoader,
@@ -58,8 +61,22 @@ const router = createBrowserRouter(
             },
             {
               path: "vans/:vanId",
-              element: <HostVanDetail/>,
-              loader:hostVanLoader
+              element: <HostVanDetail />,
+              loader: hostVanLoader,
+              children: [
+                {
+                  index: true,
+                  element: <HostVanInfo />,
+                },
+                {
+                  path: "pricing",
+                  element: <HostVanPricing />,
+                },
+                {
+                  path: "photos",
+                  element: <HostVanPhoto />,
+                },
+              ],
             },
             {
               path: "income",
