@@ -14,6 +14,8 @@ import HostVanDetail from "../host/HostVanDetail";
 import HostVanInfo from "../host/HostVanInfo";
 import HostVanPricing from "../host/HostVanPricing";
 import HostVanPhoto from "../host/HostVanPhoto";
+import LoginForm from "../components/LoginForm";
+import SignUpForm from "../components/SignUpForm";
 import {
   vansLoader,
   vanLoader,
@@ -87,6 +89,14 @@ const router = createBrowserRouter(
               element: <Reviews />,
             },
           ],
+        },
+        {
+          path:"login",
+          element: <LoginForm/>
+        },
+        {
+          path:"signup",
+          element:<SignUpForm/>
         },
         {
           path: "*",
