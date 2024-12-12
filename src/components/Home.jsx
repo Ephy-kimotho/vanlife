@@ -14,10 +14,10 @@ function Home() {
         </p>
 
         <Link
-          to="vans"
-          className="px-20 py-3 text-base sm:text-xl bg-pantone hover:bg-orange-500 rounded cursor-pointer"
+          to="signup"
+          className="px-20 py-3 text-base sm:text-xl bg-pantone hover:bg-orange-500 rounded-3xl cursor-pointer"
         >
-          Find your van.
+          Get started
         </Link>
       </div>
     </section>
