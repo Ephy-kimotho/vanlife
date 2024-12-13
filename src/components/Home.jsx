@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import { isLoggedIn } from "../../firebaseConfig";
 
 function Home() {
-  const userId = JSON.parse(localStorage.getItem("userId")) || "";
   return (
     <section className="flex-grow flex  items-center justify-center bg-mountain shadow-overlay bg-no-repeat bg-cover bg-center px-2">
       <div className="font-inter text-white text-center">
@@ -15,10 +15,10 @@ function Home() {
         </p>
 
         <Link
-          to={userId ? "about" : "signup"}
+          to={isLoggedIn ? "about" : "signup"}
           className="px-20 py-3 text-base sm:text-xl bg-pantone hover:bg-orange-500 rounded-3xl cursor-pointer"
         >
-          {userId ? "Find your van" : "Get started"}
+          {isLoggedIn ? "Find your van" : "Get started"}
         </Link>
       </div>
     </section>

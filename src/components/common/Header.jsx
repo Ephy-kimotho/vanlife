@@ -1,11 +1,28 @@
-import { NavLink, Link } from "react-router-dom";
-import Logo from "../../assets/logo.png";
-import { useState } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaXmark } from "react-icons/fa6";
+import { useState } from "react";
+import { signOut } from "firebase/auth";
+import { auth, isLoggedIn } from "../../../firebaseConfig";
+import { toast } from "sonner";
+import Logo from "../../assets/logo.png";
 
 function Header() {
   const [isOpen, setIsopen] = useState(false);
+  const navigate = useNavigate();
+
+  function logOut() {
+    signOut(auth)
+      .then(() => {
+        setIsopen(false);
+        toast.success("Log out successful");
+        navigate("/", { replace: true });
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      });
+  }
+
   return (
     <header className="bg-cream py-6 px-2 sm:px-8 flex flex-wrap justify-between items-center">
       <Link to="/">
@@ -63,6 +80,17 @@ function Header() {
         >
           Vans
         </NavLink>
+
+        {isLoggedIn && (
+          <div className="border-t-[1px] border-gray-200 self-stretch text-center sm:border-none">
+            <button
+              onClick={() => logOut()}
+              className="border-none text-white font-bold bg-orange-400 hover:bg-orange-500 py-1 w-2/5 sm:w-24 rounded cursor-pointer mt-4 sm:mt-0"
+            >
+              Log out
+            </button>
+          </div>
+        )}
       </nav>
     </header>
   );

@@ -23,7 +23,7 @@ import {
   hostVanLoader,
 } from "../loaders";
 
-import { signUpFormAction } from "../actions";
+import { signUpFormAction, signInFormAction } from "../actions";
 
 const router = createBrowserRouter(
   [
@@ -95,6 +95,7 @@ const router = createBrowserRouter(
         {
           path: "login",
           element: <LoginForm />,
+          action: signInFormAction
         },
         {
           path: "signup",

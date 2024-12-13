@@ -1,4 +1,7 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { redirect } from "react-router-dom";
 import { toast } from "sonner";
@@ -15,19 +18,46 @@ async function signUpFormAction({ request }) {
     return errors;
   } else {
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      /* CREATE A USER */
+      await createUserWithEmailAndPassword(auth, email, password);
 
-      localStorage.setItem("userId", JSON.stringify(userCredential.user.uid));
+      /* SHOW TOAST SUCCESS MESSAGE */
       toast.success("Account created successfully.");
-      return redirect("/about");
+
+      /* REDIRECT TO HOME PAGE */
+      return redirect("/");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         toast.warning("Email already exists.");
-      } 
+      }
+      return null;
+    }
+  }
+}
+
+async function signInFormAction({ request }) {
+  const formData = await request.formData();
+  const email = formData.get("email").trim();
+  const password = formData.get("password").trim();
+
+  const errors = validateLoginFormData(email, password);
+
+  if (Object.keys(errors).length > 0) {
+    return errors;
+  } else {
+    try {
+      /* SIGN IN USER */
+      await signInWithEmailAndPassword(auth, email, password);
+
+      /* SHOW SUCCESS TOAST MESSAGE */
+      toast.success("Login successful.");
+
+      /* REDIRECT TO HOME PAGE */
+      return redirect("/");
+    } catch (error) {
+      if (error.code === "auth/invalid-credential") {
+        toast.warning("Invalid credentials,Try again");
+      }
       return null;
     }
   }
@@ -63,4 +93,23 @@ function validateFormData(email, password, confirmPassword) {
   return errors;
 }
 
-export { signUpFormAction };
+function validateLoginFormData(email, password) {
+  const errors = {};
+  const regex = /\S+@\S+\.\S+/;
+
+  if (!email) {
+    errors.email = "Email is required";
+  } else if (!regex.test(email)) {
+    errors.email = "Invalid email address";
+  }
+
+  if (!password) {
+    errors.password = "Password is required";
+  } else if (password.length < 8) {
+    errors.password = "Password should be 8 characters or longer.";
+  }
+
+  return errors;
+}
+
+export { signUpFormAction, signInFormAction };

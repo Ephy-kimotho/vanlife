@@ -1,6 +1,9 @@
 import { Form, Link } from "react-router-dom";
+import { useActionData } from "react-router-dom";
 
 function LoginForm() {
+  const errors = useActionData();
+
   return (
     <section className="bg-cream flex-grow font-inter">
       <div className="px-4 sm:px-8">
@@ -14,15 +17,33 @@ function LoginForm() {
             name="email"
             id="email"
             placeholder="Enter your email.."
-            className="py-2 px-3 border-2 border-gray-100 rounded-md mt-1"
+            className={`${
+              errors?.email
+                ? "border-none outline outline-2 outline-imperialRed"
+                : "outline-none border-2 focus:border-night"
+            } py-2 px-3 border-gray-100 rounded-md mt-1`}
           />
+          {errors?.email && (
+            <p className="text-imperialRed font-bold font-sans">
+              {errors.email}
+            </p>
+          )}
           <input
             type="password"
             name="password"
             id="password"
             placeholder="Enter your password.."
-            className="py-2 px-3 rounded-md border-2 border-gray-100"
+            className={`${
+              errors?.password
+                ? "border-none outline outline-2 outline-imperialRed"
+                : "outline-none border-2 focus:border-night"
+            } py-2 px-3 border-gray-100 rounded-md mt-1`}
           />
+          {errors?.password && (
+            <p className="text-imperialRed font-bold font-sans">
+              {errors.password}
+            </p>
+          )}
 
           <button
             type="submit"

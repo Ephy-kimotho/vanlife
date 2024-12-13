@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -14,5 +14,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+let isLoggedIn = null;
 
-export { db, auth };
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    isLoggedIn = true;
+  } else {
+    isLoggedIn = false;
+  }
+});
+
+export { db, auth, isLoggedIn };
