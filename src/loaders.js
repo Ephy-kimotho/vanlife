@@ -1,4 +1,4 @@
-import { getVans, getVan, getHostVans, getHostVan } from "../../api";
+import { getVans, getVan, getHostVans, getHostVan } from "../api";
 
 async function vansLoader() {
   return await getVans();

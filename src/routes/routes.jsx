@@ -21,7 +21,9 @@ import {
   vanLoader,
   hostVansLoader,
   hostVanLoader,
-} from "../loaders/Loaders";
+} from "../loaders";
+
+import { signUpFormAction } from "../actions";
 
 const router = createBrowserRouter(
   [
@@ -91,12 +93,13 @@ const router = createBrowserRouter(
           ],
         },
         {
-          path:"login",
-          element: <LoginForm/>
+          path: "login",
+          element: <LoginForm />,
         },
         {
-          path:"signup",
-          element:<SignUpForm/>
+          path: "signup",
+          element: <SignUpForm />,
+          action: signUpFormAction,
         },
         {
           path: "*",
