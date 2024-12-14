@@ -39,6 +39,7 @@ async function signInFormAction({ request }) {
   const formData = await request.formData();
   const email = formData.get("email").trim();
   const password = formData.get("password").trim();
+  const pathname = new URL(request.url).searchParams.get("redirectTo") || "/";
 
   const errors = validateLoginFormData(email, password);
 
@@ -52,8 +53,8 @@ async function signInFormAction({ request }) {
       /* SHOW SUCCESS TOAST MESSAGE */
       toast.success("Login successful.");
 
-      /* REDIRECT TO HOME PAGE */
-      return redirect("/");
+      /* REDIRECT TO PATH */
+      return redirect(pathname);
     } catch (error) {
       if (error.code === "auth/invalid-credential") {
         toast.warning("Invalid credentials,Try again");

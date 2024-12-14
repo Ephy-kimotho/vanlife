@@ -9,22 +9,22 @@ async function vanLoader({ params }) {
   return await getVan(params.vanId);
 }
 
-async function hostVansLoader() {
-  requireAuth();
+async function hostVansLoader({ request }) {
+  requireAuth(request);
   return await getHostVans();
 }
 
-async function hostVanLoader({ params }) {
-  requireAuth();
+async function hostVanLoader({ params, request }) {
+  requireAuth(request);
   return await getHostVan(params.vanId);
 }
-function incomeLoader() {
-  requireAuth();
+function incomeLoader({ request }) {
+  requireAuth(request);
   return null;
 }
 
-function reviewsLoader() {
-  requireAuth();
+function reviewsLoader({ request }) {
+  requireAuth(request);
   return null;
 }
 
