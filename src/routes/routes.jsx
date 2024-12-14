@@ -21,6 +21,9 @@ import {
   vanLoader,
   hostVansLoader,
   hostVanLoader,
+  loginLoader,
+  incomeLoader,
+  reviewsLoader,
 } from "../loaders";
 
 import { signUpFormAction, signInFormAction } from "../actions";
@@ -85,17 +88,20 @@ const router = createBrowserRouter(
             {
               path: "income",
               element: <Income />,
+              loader: incomeLoader,
             },
             {
               path: "reviews",
               element: <Reviews />,
+              loader: reviewsLoader,
             },
           ],
         },
         {
           path: "login",
           element: <LoginForm />,
-          action: signInFormAction
+          action: signInFormAction,
+          loader: loginLoader,
         },
         {
           path: "signup",

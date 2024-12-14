@@ -14,6 +14,7 @@ function Layout() {
           toastOptions={{
             style: {
               fontSize: "1.1rem",
+              top:"2rem"
             },
           }}
         />

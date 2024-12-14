@@ -1,8 +1,8 @@
-import { Form, Link } from "react-router-dom";
-import { useActionData } from "react-router-dom";
+import { Form, Link, useActionData, useLoaderData } from "react-router-dom";
 
 function LoginForm() {
   const errors = useActionData();
+  const message = useLoaderData();
 
   return (
     <section className="bg-cream flex-grow font-inter">
@@ -10,7 +10,11 @@ function LoginForm() {
         <h2 className="font-bold text-night text-base sm:text-3xl mt-16 mb-5 text-center uppercase underline">
           Sign in to your account
         </h2>
-
+        {message && (
+          <h2 className="w-60 mx-auto mb-5 py-1 bg-red-200 rounded-md text-imperialRed text-center font-bold font-inter uppercase tracking-wide">
+            {message}
+          </h2>
+        )}
         <Form method="post" className="grid gap-2 max-w-md mx-auto">
           <input
             type="email"
