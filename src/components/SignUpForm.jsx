@@ -1,8 +1,9 @@
-import { Form, Link } from "react-router-dom";
-import { useActionData } from "react-router-dom";
+import { Form, Link, useActionData, useNavigation } from "react-router-dom";
 
 function SignUpForm() {
   const errors = useActionData();
+  const { state } = useNavigation();
+
   return (
     <section className="bg-cream flex-grow font-inter">
       <div className="px-4 sm:px-8">
@@ -64,7 +65,11 @@ function SignUpForm() {
 
           <button
             type="submit"
-            className="bg-pantone text-white font-bold text-lg py-2 rounded w-56 justify-self-center hover:bg-orange-600 my-5"
+            disabled={state === "submitting"}
+            className={`bg-pantone text-white font-bold text-lg py-2 rounded w-56 justify-self-center hover:bg-orange-600 my-5 ${
+              state === "submitting" &&
+              "disabled:bg-gray-100 disabled:cursor-not-allowed"
+            }`}
           >
             Sign Up
           </button>

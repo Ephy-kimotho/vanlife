@@ -1,8 +1,15 @@
-import { Form, Link, useActionData, useLoaderData } from "react-router-dom";
+import {
+  Form,
+  Link,
+  useActionData,
+  useLoaderData,
+  useNavigation,
+} from "react-router-dom";
 
 function LoginForm() {
   const errors = useActionData();
   const message = useLoaderData();
+  const { state } = useNavigation();
 
   return (
     <section className="bg-cream flex-grow font-inter">
@@ -51,7 +58,8 @@ function LoginForm() {
 
           <button
             type="submit"
-            className="bg-pantone text-white font-bold text-lg py-2 rounded w-56 justify-self-center hover:bg-orange-600 my-5"
+            disabled={state === "submitting"}
+            className={`bg-pantone text-white font-bold text-lg py-2 rounded w-56 justify-self-center hover:bg-orange-600 my-5 ${state === "submitting" && "disabled:bg-gray-100 disabled:cursor-not-allowed"}`}
           >
             Sign In
           </button>
