@@ -12,6 +12,7 @@ function Layout() {
           position="top-center"
           richColors
           toastOptions={{
+            className: "toast-mobile",
             style: {
               fontSize: "1.1rem",
               top:"2rem"
